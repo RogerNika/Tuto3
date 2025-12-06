@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
-/* --------- LÓGICA PARA index.html (registro / login) --------- */
+/* -------- LÓGICA PARA INDEX (registro/login) -------- */
 
 const regForm = document.getElementById('registerForm');
 const logForm = document.getElementById('loginForm');
@@ -56,20 +56,20 @@ logForm?.addEventListener('submit', async (e) => {
   }
 });
 
-/* --------- LÓGICA COMÚN PARA BIENVENIDA Y DEMÁS PÁGINAS --------- */
+/* -------- BOTONES DE BIENVENIDA Y DEMÁS PÁGINAS -------- */
 
-
-
-  document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const logoutBtn = document.getElementById('logoutBtn');
   const homeBtn   = document.getElementById('homeBtn');
 
   if (logoutBtn) {
+    console.log('LogoutBtn encontrado');
     logoutBtn.addEventListener('click', async () => {
+      console.log('Click en logout');
       try {
-        await signOut(auth);            // cierra sesión en Firebase
-        localStorage.removeItem('guest'); // opcional
-        window.location.href = 'index.html'; // ← AQUÍ te regresa al index
+        await signOut(auth);
+        localStorage.removeItem('guest');
+        window.location.href = 'index.html';
       } catch (err) {
         console.error('Error al cerrar sesión:', err);
         alert('No se pudo cerrar sesión. Intenta de nuevo.');
@@ -79,8 +79,10 @@ logForm?.addEventListener('submit', async (e) => {
 
   if (homeBtn) {
     homeBtn.addEventListener('click', () => {
-      window.location.href = 'index.html';  // ir al index sin cerrar sesión
+      window.location.href = 'index.html';
     });
   }
 });
+
+
 
