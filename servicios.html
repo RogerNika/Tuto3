@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servicios y notificaciones | App Tutorial Mobile</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3f2c83">
+
+</head>
+<body>
+  <header class="app-header">
+    <h1>Servicios y notificaciones</h1>
+    <nav class="nav">
+      <a href="bienvenida.html" class="btn-inicio">Inicio</a>
+    </nav>
+  </header>
+  <main class="content">
+    <div class="card">
+      <h2>Servicios y notificaciones en App</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener">Service Workers</a> - Tareas en segundo plano web.</li>
+        <li><a href="https://firebase.google.com/docs/cloud-messaging" target="_blank" rel="noopener">Firebase Cloud Messaging</a> - Notificaciones push multiplataforma.</li>
+        <li><a href="https://capacitorjs.com/docs/apis/background-task" target="_blank" rel="noopener">Capacitor Background Tasks</a> - Puente nativo para apps híbridas.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Cómo se definen las tareas en segundo plano en aplicaciones móviles</h2>
+      <ul>
+        <li><strong>Web (Service Workers):</strong> Interceptan requests, cachean, sincronizan datos offline.</li>
+        <li><strong>Android (WorkManager):</strong> Tareas diferidas, restricciones de batería/red [web:24].</li>
+        <li><strong>iOS (Background App Refresh):</strong> Actualizaciones periódicas con límites estrictos.</li>
+        <li><strong>Foreground Services:</strong> Tareas críticas visibles al usuario (música, navegación).</li>
+      </ul>
+      <pre>de>// Service Worker básico
+self.addEventListener('sync', (e) => {
+  e.waitUntil(syncPendingData());
+});</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>Tratamiento de notificaciones en aplicaciones móviles</h2>
+      <ul>
+        <li><strong>Locales:</strong> Programadas por la app (recordatorios, alarmas).</li>
+        <li><strong>Push:</strong> Servidor → dispositivo vía FCM/APNs.</li>
+        <li><strong>Acciones:</strong> Botones interactivos, respuestas rápidas.</li>
+        <li><strong>Canales:</strong> Agrupación por prioridad/tipo (Android 8+).</li>
+      </ul>
+      <pre>de>Notification.requestPermission().then((perm) => {
+  if (perm === 'granted') 
+    new Notification('Título', { 
+      body: 'Mensaje', 
+      actions: [{action: 'reply', title: 'Responder'}]
+    });
+});</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>Proceso de implementación: proveedores de contenido, tareas y notificaciones</h2>
+      <ol>
+        <li><strong>Configurar permisos:</strong> notifications, background-location en manifest.</li>
+        <li><strong>Registrar Service Worker:</strong> si (navigator.serviceWorker.register('/sw.js')).</li>
+        <li><strong>Implementar lógica:</strong> sync, push, background-fetch events.</li>
+        <li><strong>Integrar FCM:</strong> firebase-messaging-sw.js + VAPID keys.</li>
+        <li><strong>Probar canales:</strong> emulador + dispositivos reales.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Servicios de cómputo en la nube para apps móviles</h2>
+      <ul>
+        <li><a href="https://firebase.google.com" target="_blank" rel="noopener">Firebase</a> - Auth, DB, Hosting, Functions, ML Kit.</li>
+        <li><a href="https://aws.amazon.com/mobile/" target="_blank" rel="noopener">AWS Amplify</a> - GraphQL, Auth, Storage, Analytics.</li>
+        <li><a href="https://azure.microsoft.com/es-es/products/app-service/mobile" target="_blank" rel="noopener">Azure Mobile Apps</a> - Backend serverless.</li>
+        <li><a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a> - Functions, Firestore, Pub/Sub.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Tareas en segundo plano</h2>
+      <p>En web, el Service Worker intercepta requests, cachea recursos y puede manejar push/sync.</p>
+      <pre>de>// sw.js (extracto)
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open('app-cache-v3').then(c => c.addAll([...])));
+});
+</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>Notificación local</h2>
+      <button id="notifyBtn" class="primary">Enviar notificación</button>
+      <p class="status">Se requiere permiso del usuario.</p>
+      <img src="servicios.jpg" alt="Servicios" class="imagen-despliegue">
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control de versiones</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#3f2c83">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Herramientas de control de versiones</h1>
+    <nav class="nav-tabs">
+    <a href="bienvenida.html" class="btn-inicio">Inicio</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="card">
+      <h2>Trabajo colaborativo y flujo de cambios</h2>
+      <p>El control de versiones permite registrar el historial del código, crear ramas para nuevas funciones y revertir cambios problemáticos.</p>
+      <p>Git es el estándar de facto en desarrollo de software y se integra con servicios como GitHub, GitLab o Bitbucket para colaborar en equipo.</p>
+      <ul>
+        <li><a href="https://git-scm.com/doc" target="_blank" rel="noopener">Documentación oficial de Git</a></li>
+        <li><a href="https://docs.github.com/es/get-started/quickstart/hello-world" target="_blank" rel="noopener">Guía rápida de GitHub</a></li>
+        <li><a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">Modelo de ramas Git Flow</a></li>
+      </ul>
+      <img src="versiones.jpg" alt="Ramas y commits en un repositorio Git" class="imagen-despliegue">
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>HTML, CSS y JavaScript — PWA offline con Service Worker.</p>
+  </footer>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

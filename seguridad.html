@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Depuración y seguridad | App Tutorial Mobile</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3f2c83">
+
+</head>
+<body>
+  <header class="app-header">
+    <h1>Depuración y seguridad</h1>
+    <nav class="nav">
+     <a href="bienvenida.html" class="btn-inicio">Inicio</a>
+  </header>
+  <main class="content">
+    <div class="card">
+      <h2>Depuración y seguridad en el desarrollo de Apps</h2>
+      <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/" target="_blank" rel="noopener">Chrome DevTools</a> - Depuración web completa para apps híbridas.</li>
+        <li><a href="https://firebase.google.com/products/crashlytics" target="_blank" rel="noopener">Firebase Crashlytics</a> - Monitoreo de crashes en tiempo real [web:31].</li>
+        <li><a href="https://sentry.io/welcome/" target="_blank" rel="noopener">Sentry</a> - Rastreo de errores y performance [web:32].</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Herramientas de depuración</h2>
+      <ul>
+        <li><strong>DevTools:</strong> Network, Console, Performance, Lighthouse.</li>
+        <li><strong>Android Studio Profiler:</strong> CPU, memoria, red en dispositivos reales [web:38].</li>
+        <li><strong>Xcode Instruments:</strong> Análisis de rendimiento iOS.</li>
+        <li><strong>Registros:</strong> error, warn, info, debug.</li>
+        <li><strong>Monitoreo:</strong> Sentry/Crashlytics.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Cómo se utilizan los registros del sistema para identificar defectos</h2>
+      <ul>
+        <li><strong>console.error():</strong> Errores críticos que detienen ejecución.</li>
+        <li><strong>console.warn():</strong> Advertencias de problemas potenciales.</li>
+        <li><strong>console.log():</strong> Estados normales y valores de variables.</li>
+        <li><strong>console.debug():</strong> Información detallada en desarrollo.</li>
+        <li><strong>Filtrado:</strong> Buscar por nivel/texto en DevTools para aislar defectos [web:32].</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Proceso de refactorización de código</h2>
+      <ul>
+        <li><strong>1. Identificar:</strong> Detectar código duplicado, funciones largas (>50 líneas).</li>
+        <li><strong>2. Extraer:</strong> Crear funciones reutilizables y constantes.</li>
+        <li><strong>3. Simplificar:</strong> Eliminar condicionales anidados, usar early returns.</li>
+        <li><strong>4. Probar:</strong> Ejecutar tests automatizados antes/después.</li>
+        <li><strong>5. Revisar:</strong> Pull Request con métricas de calidad [web:34].</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Mecanismos de seguridad en Apps</h2>
+      <ul>
+        <li><strong>Permisos:</strong> Solicitar solo necesarios (location, camera), revocables dinámicamente.</li>
+        <li><strong>Archivos de configuración:</strong> .env con variables sensibles, nunca en código fuente.</li>
+        <li><strong>Cifrado:</strong> WebCrypto API para datos sensibles en cliente.</li>
+        <li><strong>Autenticación externa:</strong> <a href="https://firebase.google.com/docs/auth" target="_blank" rel="noopener">Firebase Auth</a>, OAuth2 con PKCE.</li>
+      </ul>
+      <pre>de>const enc = new TextEncoder();
+crypto.subtle.digest('SHA-256', enc.encode('secreto'))
+  .then(hash => console.log(new Uint8Array(hash)));</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>Seguridad</h2>
+      <ul>
+        <li><strong>Protección de datos:</strong> HTTPS, minimizar datos sensibles.</li>
+        <li><strong>Autenticación:</strong> OAuth2/JWT, renovación, revocación.</li>
+        <li><strong>Mitigación:</strong> Validación de entradas, CSP, limitar permisos.</li>
+        <li><strong>Cifrado:</strong> WebCrypto para hashing/cifrado.</li>
+        <img src="130831_1139.jpg" alt="Seguidad" class="imagen-despliegue ">
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

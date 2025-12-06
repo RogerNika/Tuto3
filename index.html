@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>App Tutorial Mobile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:,">
+  <link rel="manifest" href="/Tutoriales/manifest.webmanifest">
+  <meta name="theme-color" content="#3f2c83">
+</head>
+
+<body>
+  <h1>App Tutorial Mobile</h1>
+  <p>Regístrate o inicia sesión para continuar. También puedes omitir el login.</p>
+
+  <!-- Registro -->
+  <form id="registerForm" class="card">
+    <h2>Registro</h2>
+    <div class="input-group">
+      <input type="email" id="regEmail" required placeholder=" ">
+      <label for="regEmail">Correo</label>
+    </div>
+    <div class="input-group">
+      <input type="password" id="regPass" required placeholder=" ">
+      <label for="regPass">Contraseña</label>
+    </div>
+    <div class="input-group">
+      <input type="text" id="regDisplayName" placeholder=" ">
+      <label for="regDisplayName">Nombre visible (opcional)</label>
+    </div>
+    <button type="submit" class="btn-primary">Registrar</button>
+  </form>
+
+  <!-- Login -->
+  <form id="loginForm" class="card">
+    <h2>Login</h2>
+    <div class="input-group">
+      <input type="email" id="logEmail" required placeholder=" ">
+      <label for="logEmail">Correo</label>
+    </div>
+    <div class="input-group">
+      <input type="password" id="logPass" required placeholder=" ">
+      <label for="logPass">Contraseña</label>
+    </div>
+    <button type="submit" class="btn-primary">Ingresar</button>
+    <button type="button" id="googleLoginBtn" class="btn-google">Iniciar sesión con Google</button>
+  </form>
+
+  <!-- Omitir login -->
+
+  <button onclick="window.location.href='bienvenida.html'" class="btn-secondary">
+    Omitir e ir al menú
+  </button>
+
+  <div id="loginStatus"></div>
+
+  <!-- Firebase SDKs desde CDN (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <!-- Inicialización de Firebase (namespaced compat) -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBNiimGo8u_q24O94Ycs0QDqFpKhMhvrm0",
+      authDomain: "tutorial-91fae.firebaseapp.com",
+      projectId: "tutorial-91fae",
+      storageBucket: "tutorial-91fae.appspot.com",
+      messagingSenderId: "292166371548",
+      appId: "1:292166371548:web:a1c3e05418f1afb43ecc19",
+      measurementId: "G-NE9HCJWE2N"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    window.auth = firebase.auth();
+    window.db  = firebase.firestore();
+  </script>
+
+  <!-- Lógica UI + Auth -->
+  <script>
+    const regForm     = document.getElementById('registerForm');
+    const logForm     = document.getElementById('loginForm');
+    const loginStatus = document.getElementById('loginStatus');
+    const googleBtn   = document.getElementById('googleLoginBtn');
+
+    // Registro email/contraseña
+    regForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email       = document.getElementById('regEmail').value.trim();
+      const pass        = document.getElementById('regPass').value.trim();
+      const displayName = document.getElementById('regDisplayName').value.trim();
+
+      try {
+        const cred = await window.auth.createUserWithEmailAndPassword(email, pass);
+        if (displayName) {
+          await cred.user.updateProfile({ displayName });
+        }
+        await window.db.collection('users').doc(cred.user.uid).set({
+          email,
+          displayName: displayName || '',
+          createdAt: Date.now()
+        }, { merge: true });
+
+        loginStatus.textContent = 'Usuario registrado. Redirigiendo...';
+        setTimeout(() => (window.location.href = 'bienvenida.html'), 600);
+      } catch (err) {
+        loginStatus.textContent = 'Error en registro: ' + err.message;
+      }
+    });
+
+    // Login email/contraseña
+    logForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('logEmail').value.trim();
+      const pass  = document.getElementById('logPass').value.trim();
+
+      try {
+        await window.auth.signInWithEmailAndPassword(email, pass);
+        loginStatus.textContent = 'Ingreso correcto. Redirigiendo...';
+        setTimeout(() => (window.location.href = 'bienvenida.html'), 600);
+      } catch (err) {
+        loginStatus.textContent = 'Error de inicio de sesión: ' + err.message;
+      }
+    });
+
+    // Login con Google
+    googleBtn?.addEventListener('click', async () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      try {
+        const result = await window.auth.signInWithPopup(provider);
+        const user   = result.user;
+
+        await window.db.collection('users').doc(user.uid).set({
+          email: user.email,
+          displayName: user.displayName || '',
+          photoURL: user.photoURL || '',
+          provider: 'google',
+          updatedAt: Date.now()
+        }, { merge: true });
+
+        loginStatus.textContent = 'Ingreso con Google correcto. Redirigiendo...';
+        setTimeout(() => (window.location.href = 'bienvenida.html'), 600);
+      } catch (err) {
+        loginStatus.textContent = 'Error con Google: ' + err.message;
+      }
+    });
+
+    // Logout rápido desde index (opcional)
+    document.getElementById('btnLogout')?.addEventListener('click', async () => {
+      try {
+        await window.auth.signOut();
+        alert('Sesión cerrada');
+      } catch (err) {
+        alert('Error al cerrar sesión: ' + err.message);
+      }
+    });
+  </script>
+
+  <!-- app.js para Service Worker y PWA -->
+  <script src="app.js"></script>
+</body>
+</html>

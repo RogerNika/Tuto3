@@ -1,0 +1,22 @@
+{
+  "name": "App Tutorial Mobile",
+  "short_name": "AppMobile",
+  "start_url": "/Tutoriales/index.html",
+  "display": "standalone",
+  "background_color": "#1b1033",
+  "theme_color": "#3f2c83",
+  "icons": [
+    {
+      "src": "/Tutoriales/192192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/Tutoriales/favicon_berty--android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
+

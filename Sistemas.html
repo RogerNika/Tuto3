@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sistemas operativos móviles</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#3f2c83">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Sistemas operativos móviles</h1>
+    <nav class="nav-tabs">
+    <a href="bienvenida.html" class="btn-inicio">Inicio</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="card">
+      <h2>Arquitectura general</h2>
+      <p>Un sistema operativo móvil organiza el dispositivo en capas: kernel, servicios del sistema, frameworks y capa de aplicaciones.</p>
+      <p>Android se basa en el kernel de Linux y usa una máquina virtual para ejecutar apps, mientras que iOS usa el kernel XNU y frameworks propios como UIKit.</p>
+      <ul>
+        <li><a href="https://developer.android.com/guide/platform?hl=es-419" target="_blank" rel="noopener">Arquitectura de la plataforma Android</a></li>
+        <li><a href="https://developer.apple.com/ios/" target="_blank" rel="noopener">Visión general de iOS</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Mobile_operating_system" target="_blank" rel="noopener">Sistemas operativos móviles (Wikipedia)</a></li>
+      </ul>
+      <!-- Imagen de referencia -->
+      <img src="sistemas.png" alt="Capas de un sistema operativo móvil" class="imagen-despliegue">
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>HTML, CSS y JavaScript — PWA offline con Service Worker.</p>
+  </footer>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

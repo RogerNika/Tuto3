@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arquitecturas y patrones de diseño</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#3f2c83">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Arquitecturas y patrones de diseño</h1>
+    <nav class="nav-tabs">
+      
+      <a href="bienvenida.html" class="btn-inicio">Inicio</a>
+     
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="card">
+      <h2>Separación de responsabilidades</h2>
+      <p>Arquitecturas como MVC, MVP y MVVM ayudan a separar la lógica de negocio de la interfaz de usuario, facilitando pruebas y mantenimiento.</p>
+      <p>En apps grandes se aplican arquitecturas limpias y patrones como repositorios, inyección de dependencias y use cases.</p>
+      <ul>
+        <li><a href="https://developer.android.com/topic/architecture?hl=es-419" target="_blank" rel="noopener">Guía de arquitectura en Android</a></li>
+        <li><a href="https://learn.microsoft.com/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" target="_blank" rel="noopener">Patrón MVVM</a></li>
+        <li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="noopener">Clean Architecture</a></li>
+      </ul>
+      <img src="arqui.png" alt="Arquitectura de capas en una app móvil" class="imagen-despliegue">
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>HTML, CSS y JavaScript — PWA offline con Service Worker.</p>
+  </footer>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="auth.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

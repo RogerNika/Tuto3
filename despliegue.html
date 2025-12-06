@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Empaquetado y despliegue | App Tutorial Mobile</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3f2c83">
+
+</head>
+<body>
+  <header class="app-header">
+    <h1>Empaquetado y despliegue</h1>
+    <nav class="nav">
+      <a href="bienvenida.html" class="btn-inicio">Inicio</a>
+    </nav>
+  </header>
+  <main class="content">
+    <div class="card">
+      <ul>
+        <li><strong>Empaquetado:</strong> Capacitor/Cordova.</li>
+        <li><strong>Despliegue web:</strong> Vercel, Netlify, Firebase Hosting.</li>
+        <li><strong>CI/CD:</strong> GitHub Actions, Fastlane.</li>
+      </ul>
+
+      <h3>Tipos de empaquetado en App</h3>
+      <ul>
+        <li><a href="https://developer.android.com/studio/build/building-cmdline#packaging" target="_blank" rel="noopener">Android Package (APK/AAB)</a></li>
+        <li><a href="https://developer.apple.com/documentation/xcode/packaging-your-app-for-distribution" target="_blank" rel="noopener">iOS App Bundle</a></li>
+        <li><a href="https://web.dev/progressive-web-apps/" target="_blank" rel="noopener">Progressive Web Apps (PWA)</a></li>
+        <li><a href="https://capacitorjs.com/docs/basics/building" target="_blank" rel="noopener">Capacitor App Packaging</a></li>
+        <li><a href="https://cordova.apache.org/docs/en/latest/guide/cli/index.html" target="_blank" rel="noopener">Cordova App Packaging</a></li>
+      </ul>
+
+      <h3>Herramientas y procedimientos de empaquetado de App</h3>
+      <ul>
+        <li><a href="https://capacitorjs.com/" target="_blank" rel="noopener">Capacitor</a> - Empaquetado y puente nativo para apps híbridas.</li>
+        <li><a href="https://cordova.apache.org/" target="_blank" rel="noopener">Apache Cordova</a> - Herramienta clásica para empaquetado de apps móviles híbridas.</li>
+        <li><a href="https://developer.android.com/studio/build" target="_blank" rel="noopener">Android Studio Build System</a> - Procedimientos para empaquetado Android.</li>
+        <li><a href="https://developer.apple.com/xcode/" target="_blank" rel="noopener">Xcode</a> - Procedimientos de empaquetado y firma para iOS.</li>
+      </ul>
+
+      <h3>Cómo diferenciar las herramientas y procedimientos de empaquetado</h3>
+      <ul>
+        <li><strong>Capacitor y Cordova:</strong> Orientados a apps híbridas con webviews; Capacitor es más moderno y mantiene integración nativa.</li>
+        <li><strong>Android Studio y Xcode:</strong> Usados para empaquetado nativo y publicación en sus respectivas tiendas.</li>
+        <li><strong>PWAs:</strong> Empaquetado basado en certificación web (manifest.json y service workers) sin pasar por tiendas.</li>
+      </ul>
+
+      <h3>Herramientas de despliegue de App</h3>
+      <ul>
+        <li><a href="https://vercel.com/" target="_blank" rel="noopener">Vercel</a> - Despliegue rápido para aplicaciones web y frontend.</li>
+        <li><a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a> - Plataforma para hosting y despliegue de sitios web JAMstack.</li>
+        <li><a href="https://firebase.google.com/products/hosting" target="_blank" rel="noopener">Firebase Hosting</a> - Despliegue para aplicaciones web con backend Firebase.</li>
+        <li><a href="https://github.com/features/actions" target="_blank" rel="noopener">GitHub Actions</a> - CI/CD para automatizar despliegues.</li>
+        <li><a href="https://fastlane.tools/" target="_blank" rel="noopener">Fastlane</a> - Automatización para despliegue en tiendas móviles.</li>
+      </ul>
+
+      <h3>Plataformas</h3>
+      <ol>
+        <li><strong>Android:</strong> AAB/APK firmados, Play Console.</li>
+        <li><strong>iOS:</strong> Build firmado, App Store Connect.</li>
+        <li><strong>PWA:</strong> Manifest + Service Worker.</li>
+        <img src="image.png" alt="desplieuge" class="image-center, imagen-despliegue"/>
+      </ol>
+    </div>
+  </main>
+</body>
+</html>

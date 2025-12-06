@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sensores | App Tutorial Mobile</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3f2c83">
+
+</head>
+<body>
+  <header class="app-header">
+    <h1>Gestión de sensores</h1>
+    <nav class="nav">
+     <a href="bienvenida.html" class="btn-inicio">Inicio</a>
+    </nav>
+  </header>
+  <main class="content">
+    <div class="card">
+      <h2>Gestión de sensores</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/API/Sensor_APIs" target="_blank" rel="noopener">Sensor APIs Web</a> - Acceso unificado a sensores desde JavaScript.</li>
+        <li><a href="https://developer.android.com/develop/sensors-and-location/sensors/sensors_overview" target="_blank" rel="noopener">Android Sensor Framework</a> - Gestión nativa de sensores [web:24].</li>
+        <li><a href="https://developer.apple.com/documentation/coremotion" target="_blank" rel="noopener">Core Motion iOS</a> - Framework para movimiento y orientación.</li>
+      </ul>
+
+      <h2>Identificar los tipos de sensores en dispositivos móviles</h2>
+      <ul>
+        <li><strong><a href="https://developer.mozilla.org/es/docs/Web/API/Geolocation_API" target="_blank" rel="noopener">GPS</a>:</strong> Ubicación geográfica precisa vía satélites [web:22].</li>
+        <li><strong><a href="https://developer.mozilla.org/es/docs/Web/API/Accelerometer" target="_blank" rel="noopener">Acelerómetro</a>:</strong> Movimiento lineal y orientación básica del dispositivo [web:21].</li>
+        <li><strong><a href="https://developer.mozilla.org/es/docs/Web/API/Gyroscope" target="_blank" rel="noopener">Giroscopio</a>:</strong> Rotación y giros en 3D, complementa al acelerómetro [web:21][web:23].</li>
+        <li><strong><a href="https://developer.mozilla.org/es/docs/Web/API/Magnetometer" target="_blank" rel="noopener">Magnetómetro</a>:</strong> Orientación magnética (brújula digital) [web:22].</li>
+        <li><strong>Luz ambiente:</strong> Ajuste automático de brillo de pantalla.</li>
+        <li><strong>Proximidad:</strong> Detección de objetos cercanos (llamadas).</li>
+        <li><strong>Barómetro:</strong> Altitud por presión atmosférica [web:27].</li>
+        <li><strong>Podómetro:</strong> Conteo de pasos basado en acelerómetro.</li>
+      </ul>
+
+      <h2>Proceso de gestión de sensores: habilitación, obtención y procesamiento</h2>
+      <ul>
+        <li><strong>Habilitación:</strong> Solicitar permisos del usuario (location, sensors) y verificar disponibilidad del hardware.</li>
+        <li><strong>Obtención:</strong> Leer valores puntuales o suscribirse a eventos en tiempo real (watchPosition, addEventListener) [web:24].</li>
+        <li><strong>Procesamiento:</strong> Normalizar datos (grados/radianes), filtrar ruido, combinar sensores (fusión sensor) y aplicar lógica de negocio [web:23].</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Proceso de gestión</h2>
+      <ul>
+        <li><strong>Habilitación:</strong> solicitar permisos del usuario.</li>
+        <li><strong>Obtención:</strong> leer muestras o suscribirse a eventos.</li>
+        <li><strong>Procesamiento:</strong> normalizar y aplicar lógica de negocio.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Demo: GPS y orientación</h2>
+      <button id="gpsBtn" class="primary">Obtener ubicación</button>
+      <p id="gpsStatus" class="status"></p>
+      <button id="orientBtn" class="secondary">Activar orientación</button>
+      <p id="orientStatus" class="status"></p>
+      <pre>de>// Geolocalización
+navigator.geolocation.getCurrentPosition(
+  (pos) => console.log(pos.coords.latitude, pos.coords.longitude),
+  (err) => console.error(err),
+  { enableHighAccuracy: true, timeout: 10000 }
+);
+// DeviceOrientation
+window.addEventListener('deviceorientation', (e) => {
+  console.log(e.alpha, e.beta, e.gamma);
+});
+<img src="Analytics-AQI.jpg" alt="Sensores" class="imagen-despliegue">
+</code></pre>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
